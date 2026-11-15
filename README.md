@@ -6,7 +6,7 @@
 
 **OrcaX Office Suite** là bộ giải pháp toàn diện cho tự động hóa và chuẩn hóa văn bản tại Việt Nam:
 - **Chuẩn hóa tự động 1-Click**: Áp dụng triệt để thể thức văn bản hành chính theo Nghị định 30/2020/NĐ-CP và văn bản Đảng theo Hướng dẫn 05-HD/VPTW.
-- **Thư viện 59 Biểu mẫu chuẩn Quốc gia**: Đầy đủ các mẫu văn bản cấp Bộ, cấp Tỉnh, cấp Sở, cấp Xã/Phường, văn bản Đảng các cấp, văn bản hợp nhất (Nghị định 250) và giáo án (Công văn 5512).
+- **Thư viện 59 Biểu mẫu chuẩn Quốc gia**: Đầy đủ các mẫu văn bản cấp Bộ, cấp Tỉnh, cấp Sở, cấp Xã/Phường, văn bản Đảng các cấp, văn bản hợp nhất (Nghị định 250) và văn bản (Công văn 250).
 - **Thanh công cụ Word Add-in (Tab ORCAX-FORMAT)**: Tích hợp trực tiếp vào Microsoft Word với giao diện Fluent Ribbon hiện đại, không sử dụng emoji, icon chuẩn Microsoft Office chính hãng (`imageMso`).
 - **Hệ thống kiến trúc Monorepo**: Kiến trúc hoàn chỉnh với Frontend (Next.js/React), Backend API (FastAPI / Node.js), Engine xử lý văn bản, và hệ thống kiểm định quy chuẩn tự động.
 

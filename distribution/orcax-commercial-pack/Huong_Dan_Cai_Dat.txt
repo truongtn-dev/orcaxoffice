@@ -19,7 +19,7 @@
 3. KÍCH HOẠT BẢN QUYỀN VĨNH VIỄN:
    - Nhấp đúp chuột vào file "KEY_BAN_QUYEN.reg" -> chọn "Yes" -> "OK".
    - Sau khi mở Word, chọn Tab "ORCAX-FORMAT" -> bấm "Thông tin bản quyền" để xem trạng thái kích hoạt.
-   - Trải nghiệm 100% tính năng: Chuẩn hóa Nghị định 30, Hướng dẫn 05 Đảng, Công văn 5512 Giáo án,
+   - Trải nghiệm 100% tính năng: Chuẩn hóa Nghị định 30, Hướng dẫn 05 Đảng, Công văn 250 Văn bản,
      Căn lề A4 chuẩn, Đánh số trang tự động và thư viện 58 biểu mẫu chuẩn Quốc gia.
 
 4. GỠ CÀI ĐẶT:

@@ -28,3 +28,9 @@ inspect_*.py
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Temporary and Lock Files
+~$*
+*.tmp
+__pycache__/
+vba_src/

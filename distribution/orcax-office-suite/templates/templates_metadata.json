@@ -642,19 +642,5 @@
     "version": "2.0",
     "ruleset": "ND250_VBHN",
     "description": "Mẫu Kỹ thuật Hợp nhất văn bản quy phạm pháp luật"
-  },
-  {
-    "id": "mau_giao_an_5512",
-    "name": "Kế hoạch bài dạy (Giáo án 5512)",
-    "file": "Mau_Giao_an_KHBD_5512.docx",
-    "profile": "PROFILE_HANH_CHINH",
-    "documentType": "Kế hoạch bài dạy",
-    "source": "Công văn 5512/BGDĐT-GDTrH của Bộ Giáo dục và Đào tạo",
-    "officialSample": true,
-    "type": "OFFICIAL_SAMPLE",
-    "editable": true,
-    "version": "2.0",
-    "ruleset": "CV5512_BGDDT",
-    "description": "Mẫu Kế hoạch bài dạy 4 hoạt động chuẩn Bộ Giáo dục và Đào tạo"
   }
 ]
