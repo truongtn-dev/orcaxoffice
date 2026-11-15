@@ -1,0 +1,125 @@
+export const SYSTEM_PROFILES = [
+  {
+    id: '40000000-0000-4000-8000-000000000001',
+    code: 'word-standard-vi',
+    name: 'Chuẩn văn bản tiếng Việt',
+    host: 'word' as const,
+    versionId: '41000000-0000-4000-8000-000000000001',
+    source: 'Bộ quy tắc nội bộ OrcaX (đã rà soát pháp lý mẫu)',
+    rules: [
+      {
+        id: '42000000-0000-4000-8000-000000000001',
+        code: 'word.style.font-body',
+        version: '1.0.0',
+        title: 'Phông chữ nội dung',
+        description: 'Nội dung chính dùng Times New Roman 13pt.',
+        checkKind: 'style.font',
+        defaultSeverity: 'fail' as const,
+        checkConfig: { fontNames: ['Times New Roman', 'Times'], fontSizePt: 13 },
+        sortOrder: 1,
+      },
+      {
+        id: '42000000-0000-4000-8000-000000000002',
+        code: 'word.structure.heading-levels',
+        version: '1.0.0',
+        title: 'Cấp đề mục liên tục',
+        description: 'Không bỏ cấp đề mục.',
+        checkKind: 'structure.heading',
+        defaultSeverity: 'warning' as const,
+        checkConfig: { maxSkip: 0 },
+        sortOrder: 2,
+      },
+    ],
+    legalReferences: [
+      {
+        id: '43000000-0000-4000-8000-000000000001',
+        citation: 'Quy chuẩn định dạng văn bản nội bộ OrcaX v1',
+        sourceUrl: null as string | null,
+        evidenceId: '44000000-0000-4000-8000-000000000001',
+        evidenceSummary: 'Rà soát nội bộ trước khi đưa vào catalogue hệ thống.',
+      },
+    ],
+  },
+  {
+    id: '40000000-0000-4000-8000-000000000002',
+    code: 'excel-print-a4',
+    name: 'In Excel khổ A4',
+    host: 'excel' as const,
+    versionId: '41000000-0000-4000-8000-000000000002',
+    source: 'Hướng dẫn in A4 OrcaX',
+    rules: [
+      {
+        id: '42000000-0000-4000-8000-000000000003',
+        code: 'excel.print.a4-portrait',
+        version: '1.0.0',
+        title: 'Khổ in A4 dọc',
+        description: 'Trang in A4, hướng dọc.',
+        checkKind: 'print.page',
+        defaultSeverity: 'fail' as const,
+        checkConfig: {
+          paperSize: 'A4',
+          orientation: 'portrait',
+          marginMm: { top: 15, bottom: 15, left: 12, right: 12 },
+        },
+        sortOrder: 1,
+      },
+    ],
+    legalReferences: [
+      {
+        id: '43000000-0000-4000-8000-000000000002',
+        citation: 'Hướng dẫn in A4 nội bộ OrcaX v1',
+        sourceUrl: null as string | null,
+        evidenceId: '44000000-0000-4000-8000-000000000002',
+        evidenceSummary: 'Xác nhận thông số in trước khi phát hành hồ sơ hệ thống.',
+      },
+    ],
+  },
+] as const;
+
+export const SYSTEM_TEMPLATES = [
+  {
+    id: '45000000-0000-4000-8000-000000000001',
+    code: 'word-cong-van-co-ban',
+    name: 'Công văn cơ bản',
+    host: 'word' as const,
+    versionId: '46000000-0000-4000-8000-000000000001',
+    fields: [
+      {
+        id: '47000000-0000-4000-8000-000000000001',
+        fieldKey: 'so_hieu',
+        label: 'Số hiệu',
+        fieldType: 'text',
+        required: true,
+        defaultValue: null as string | null,
+        validationJson: { maxLength: 64 },
+        sortOrder: 1,
+      },
+      {
+        id: '47000000-0000-4000-8000-000000000002',
+        fieldKey: 'ngay_ban_hanh',
+        label: 'Ngày ban hành',
+        fieldType: 'date',
+        required: true,
+        defaultValue: null as string | null,
+        validationJson: {},
+        sortOrder: 2,
+      },
+    ],
+    mappings: [
+      {
+        id: '48000000-0000-4000-8000-000000000001',
+        fieldKey: 'so_hieu',
+        sourceKind: 'form' as const,
+        sourcePath: 'submission.so_hieu',
+        transform: 'trim' as const,
+      },
+      {
+        id: '48000000-0000-4000-8000-000000000002',
+        fieldKey: 'ngay_ban_hanh',
+        sourceKind: 'form' as const,
+        sourcePath: 'submission.ngay_ban_hanh',
+        transform: 'date_iso' as const,
+      },
+    ],
+  },
+] as const;

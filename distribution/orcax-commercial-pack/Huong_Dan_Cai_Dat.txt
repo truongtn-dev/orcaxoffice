@@ -1,0 +1,30 @@
+================================================================================
+                    HƯỚNG DẪN CÀI ĐẶT & KÍCH HOẠT ORCAX (v1.0)
+               Hệ thống Chuẩn Hóa Thể Thức Văn Bản Việt Nam
+                           Bản quyền: OrcaX Office (orcax.vn)
+================================================================================
+
+1. CÁCH 1 - CÀI ĐẶT TỰ ĐỘNG 1-CLICK (Khuyên dùng):
+   - Bước 1: Giải nén toàn bộ file zip này ra thư mục.
+   - Bước 2: Nhấp đúp chuột vào file "Cai_Dat_OrcaX_1Click.bat".
+   - Bước 3: Mở Microsoft Word, bạn sẽ thấy ngay Tab "ORCAX-FORMAT" trên thanh Ribbon!
+   * Lưu ý: File cài đặt 1-Click đã tự động kích hoạt Bản quyền vĩnh viễn và đồng bộ 58 biểu mẫu.
+
+2. CÁCH 2 - CÀI ĐẶT THỦ CÔNG:
+   - Bước 1: Nhấn tổ hợp phím Windows + R, nhập: %appdata%\Microsoft\Word\STARTUP và nhấn Enter.
+   - Bước 2: Copy file "OrcaX_Addin.dotm" vào thư mục STARTUP vừa mở.
+   - Bước 3: Nhấp đúp chuột vào file "KEY_BAN_QUYEN.reg" -> chọn "Yes" -> "OK".
+   - Bước 4: Khởi động lại Microsoft Word.
+
+3. KÍCH HOẠT BẢN QUYỀN VĨNH VIỄN:
+   - Nhấp đúp chuột vào file "KEY_BAN_QUYEN.reg" -> chọn "Yes" -> "OK".
+   - Sau khi mở Word, chọn Tab "ORCAX-FORMAT" -> bấm "Thông tin bản quyền" để xem trạng thái kích hoạt.
+   - Trải nghiệm 100% tính năng: Chuẩn hóa Nghị định 30, Hướng dẫn 05 Đảng, Công văn 5512 Giáo án,
+     Căn lề A4 chuẩn, Đánh số trang tự động và thư viện 58 biểu mẫu chuẩn Quốc gia.
+
+4. GỠ CÀI ĐẶT:
+   - Nhấp đúp chuột vào file "Go_Cai_Dat_OrcaX.bat".
+
+================================================================================
+Hỗ trợ khách hàng: OrcaX Office Suite (orcax.vn) - Email: support@orcax.vn
+================================================================================

@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: orcax
+          # Ephemeral database for this job. Not a deployed credential.
+          POSTGRES_PASSWORD: orcax_ci_only
+          POSTGRES_DB: orcax_office
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U orcax -d orcax_office"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      API_PORT: 3001
+      LOG_LEVEL: silent
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_USER: orcax
+      DATABASE_PASSWORD: orcax_ci_only
+      DATABASE_NAME: orcax_office
+      DATABASE_SSL: 'false'
+      AUTH_TOKEN_SECRET: ci-only-token-secret-not-deployed-32
+      PAYMENT_WEBHOOK_SECRET: ci-only-payment-webhook-secret
+      EMAIL_TRANSPORT: log
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:foundation
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - run: npm run migration:run
+        env:
+          NODE_ENV: test
+      - run: npm run migration:revert
+        env:
+          NODE_ENV: test
+      - run: npm run migration:run
+        env:
+          NODE_ENV: test
+      - run: npm run test:integration
+        env:
+          NODE_ENV: test

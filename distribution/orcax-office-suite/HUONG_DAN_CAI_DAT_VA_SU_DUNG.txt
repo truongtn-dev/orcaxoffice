@@ -1,0 +1,62 @@
+================================================================================
+                    HƯỚNG DẪN CÀI ĐẶT & SỬ DỤNG ORCAX OFFICE SUITE
+             Nền tảng Chuẩn Hóa Thể Thức Văn Bản Việt Nam & In Ấn Excel A4
+                           Bản quyền: OrcaX Office Suite
+================================================================================
+
+1. BỘ CÔNG CỤ ORCAX GỒM CÓ:
+--------------------------------------------------------------------------------
+A. MICROSOFT WORD (OrcaX_Addin.dotm):
+   - Tab "ORCAX-FORMAT" trên thanh Ribbon.
+   - Nhóm 1: Chuẩn hóa & Rà soát: Chuẩn hóa tự động 1-Click theo Nghị định 30/2020
+     và Hướng dẫn 05-HD/VPTW, nhận diện loại văn bản, rà soát thể thức, chuyển mã
+     phông chữ cũ (TCVN3, VNI) sang Unicode, hoàn tác chuẩn hóa.
+   - Nhóm 2: Chuẩn hóa thủ công: Tiêu đề đầu trang, tên loại & trích yếu, đề mục &
+     nội dung, chữ ký & nơi nhận.
+   - Nhóm 3: Bố cục trang: Căn lề A4 chuẩn (20-20-30-15mm), chèn trang ngang/dọc,
+     xóa trang trắng thừa, đánh số trang tự động ẩn trang đầu.
+   - Nhóm 4: Chèn nhanh thành phần: Khung Quốc hiệu cơ quan các cấp (Bộ, Cục, Sở,
+     UBND Xã/Phường, Đảng ủy, Chi bộ), mẫu chữ ký thẩm quyền, độ khẩn, độ mật.
+   - Nhóm 5: Công cụ văn bản: Xóa khoảng trắng lỗi, sửa dính chữ, sửa dấu thanh.
+   - Nhóm 6: Thư viện 58 biểu mẫu chuẩn Quốc gia (Hành chính, Xã/Phường, Đảng, Chi bộ).
+
+B. MICROSOFT EXCEL (OrcaX_Excel.xlam):
+   - Tab "ORCAX - IN ẤN A4" và nhóm "ORCAX IN A4" ngay tại thẻ Home của Excel.
+   - Tự động căn lề trang in A4 chuẩn xác.
+   - Tự động co giãn bảng tính (Fit to page) chống che mất chữ 100% (cả ô đơn và ô gộp Merge).
+   - Tự động nhận diện hướng in (A4 Dọc hoặc A4 Ngang) phù hợp với kích thước bảng.
+   - Nút hoàn tác 1-Click trả bảng tính về như trước khi chuẩn hóa.
+
+--------------------------------------------------------------------------------
+
+2. HƯỚNG DẪN CÀI ĐẶT:
+--------------------------------------------------------------------------------
+CÁCH 1: CÀI ĐẶT TỰ ĐỘNG 1-CLICK (Khuyên dùng)
+   - Bước 1: Giải nén toàn bộ tệp "OrcaX_Office_Suite_v1.0.zip".
+   - Bước 2: Nhấp đúp chuột vào file:
+             "Cai_Dat_OrcaX_1Click.bat"
+   - Bước 3: Mở Microsoft Word và Excel, bạn sẽ thấy ngay thanh công cụ OrcaX!
+
+CÁCH 2: CÀI ĐẶT THỦ CÔNG
+   - Word: Nhấn phím Windows + R -> nhập: %appdata%\Microsoft\Word\STARTUP
+           Copy file "OrcaX_Addin.dotm" vào thư mục STARTUP.
+   - Excel: Nhấn phím Windows + R -> nhập: %appdata%\Microsoft\Excel\XLSTART
+           Copy file "OrcaX_Excel.xlam" vào thư mục XLSTART.
+   - Biểu mẫu: Copy thư mục "templates" và "orcax_presets.json" vào %appdata%\OrcaX\.
+   - Khởi động lại Microsoft Word và Excel.
+
+--------------------------------------------------------------------------------
+
+3. KÍCH HOẠT BẢN QUYỀN:
+   - File cài đặt 1-Click đã tự động kích hoạt bản quyền vĩnh viễn (Active 100%).
+   - Trên Word: Tab "ORCAX-FORMAT" -> Bấm nút "Thông tin bản quyền" để xem thông tin.
+
+--------------------------------------------------------------------------------
+
+4. GỠ CÀI ĐẶT:
+   - Nhấp đúp chuột vào file "Go_Cai_Dat_OrcaX.bat" để gỡ bỏ sạch sẽ khỏi máy tính.
+
+================================================================================
+Hệ thống: OrcaX Office Suite - Nền tảng Chuẩn hóa Thể thức Văn bản Việt Nam
+Địa chỉ dự án: E:\OrcaXOffice
+================================================================================

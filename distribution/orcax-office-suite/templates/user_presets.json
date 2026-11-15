@@ -1,0 +1,198 @@
+{
+  "agencies_admin": [
+    {
+      "id": "admin_bo",
+      "alias": "Cấp Bộ (Bộ Nội vụ)",
+      "parent_agency": "",
+      "agency_name": "BỘ NỘI VỤ",
+      "location": "Hà Nội",
+      "code_prefix": "BNV"
+    },
+    {
+      "id": "admin_cuc",
+      "alias": "Cục trực thuộc Bộ (Cục VTLT)",
+      "parent_agency": "BỘ NỘI VỤ",
+      "agency_name": "CỤC VĂN THƯ VÀ LƯU TRỮ NHÀ NƯỚC",
+      "location": "Hà Nội",
+      "code_prefix": "VTLT"
+    },
+    {
+      "id": "admin_1",
+      "alias": "Sở Khoa học và Công nghệ",
+      "parent_agency": "UBND TỈNH...",
+      "agency_name": "SỞ KHOA HỌC VÀ CÔNG NGHỆ",
+      "location": "...",
+      "code_prefix": "SKHCN"
+    },
+    {
+      "id": "admin_2",
+      "alias": "UBND Xã/Phường",
+      "parent_agency": "UBND TỈNH...",
+      "agency_name": "UBND PHƯỜNG...",
+      "location": "...",
+      "code_prefix": "UBND"
+    },
+    {
+      "id": "admin_3",
+      "alias": "UBND Đặc khu",
+      "parent_agency": "UBND TỈNH...",
+      "agency_name": "UBND ĐẶC KHU...",
+      "location": "...",
+      "code_prefix": "UBND"
+    },
+    {
+      "id": "admin_4",
+      "alias": "Văn phòng UBND tỉnh",
+      "parent_agency": "UBND TỈNH...",
+      "agency_name": "VĂN PHÒNG ỦY BAN NHÂN DÂN",
+      "location": "...",
+      "code_prefix": "VP"
+    }
+  ],
+  "agencies_party": [
+    {
+      "id": "party_1",
+      "alias": "Đảng ủy Các cơ quan Đảng tỉnh",
+      "parent_party": "TỈNH ỦY...",
+      "party_name": "ĐẢNG ỦY CÁC CƠ QUAN ĐẢNG TỈNH",
+      "location": "...",
+      "code_prefix": "NQ/DU"
+    },
+    {
+      "id": "party_2",
+      "alias": "Ban Thường vụ Tỉnh ủy",
+      "parent_party": "TỈNH ỦY...",
+      "party_name": "BAN THƯỜNG VỤ",
+      "location": "...",
+      "code_prefix": "NQ/TU"
+    },
+    {
+      "id": "party_3",
+      "alias": "Đảng ủy Xã/Phường/Đặc khu",
+      "parent_party": "TỈNH ỦY...",
+      "party_name": "ĐẢNG ỦY XÃ/PHƯỜNG...",
+      "location": "...",
+      "code_prefix": "NQ/DU"
+    },
+    {
+      "id": "party_4",
+      "alias": "Chi bộ Cơ sở (Trực thuộc)",
+      "parent_party": "ĐẢNG ỦY XÃ/PHƯỜNG...",
+      "party_name": "CHI BỘ...",
+      "location": "...",
+      "code_prefix": "NQ/CB"
+    }
+  ],
+  "recipients_list": [
+    {
+      "id": "rec_bo",
+      "title": "Mẫu Nơi nhận Cấp Bộ / Ngang Bộ",
+      "content": "- Như Điều ...;\n- Thủ tướng, các Phó Thủ tướng Chính phủ;\n- Văn phòng Trung ương Đảng và các Ban của Đảng;\n- Văn phòng Quốc hội, Văn phòng Chủ tịch nước;\n- Các Bộ, cơ quan ngang Bộ, cơ quan thuộc CP;\n- HĐND, UBND các tỉnh, thành phố trực thuộc TW;\n- Lưu: VT, PC."
+    },
+    {
+      "id": "rec_1",
+      "title": "Mẫu Nơi nhận Công văn thông dụng",
+      "content": "- Như kính gửi;\n- Giám đốc, các Phó Giám đốc;\n- Các phòng, ban, đơn vị trực thuộc;\n- UBND các xã, phường, đặc khu;\n- Lưu: VT, TH."
+    },
+    {
+      "id": "rec_2",
+      "title": "Mẫu Nơi nhận Quyết định ban hành",
+      "content": "- Như Điều 3;\n- Thường trực Tỉnh ủy, HĐND tỉnh, UBND tỉnh;\n- Các Sở, ban, ngành tỉnh;\n- UBND các xã, phường, đặc khu trực thuộc;\n- Lưu: VT, TCCB."
+    },
+    {
+      "id": "rec_3",
+      "title": "Mẫu Nơi nhận Chi bộ Đảng",
+      "content": "- Đảng ủy cấp trên (để b/c);\n- Các đồng chí đảng viên trong Chi bộ;\n- Lưu: Chi bộ."
+    }
+  ],
+  "signers_list": [
+    {
+      "id": "sig_bo_truong",
+      "alias": "Bộ trưởng - Nguyễn Văn A",
+      "title": "BỘ TRƯỞNG",
+      "position": "BỘ TRƯỞNG",
+      "fullname": "Nguyễn Văn A",
+      "signer_type": "Thủ trưởng cấp Bộ (BỘ TRƯỞNG)"
+    },
+    {
+      "id": "sig_thu_truong",
+      "alias": "KT. Bộ trưởng - Thứ trưởng",
+      "title": "KT. BỘ TRƯỞNG\nTHỨ TRƯỞNG",
+      "position": "THỨ TRƯỞNG",
+      "fullname": "Trần Văn B",
+      "signer_type": "Ký thay Bộ trưởng (KT. BỘ TRƯỞNG - THỨ TRƯỞNG)"
+    },
+    {
+      "id": "sig_cuc_truong",
+      "alias": "Cục trưởng - Lê Văn C",
+      "title": "CỤC TRƯỞNG",
+      "position": "CỤC TRƯỞNG",
+      "fullname": "Lê Văn C",
+      "signer_type": "Thủ trưởng cơ quan thuộc Bộ (CỤC TRƯỞNG / TỔNG CỤC TRƯỞNG)"
+    },
+    {
+      "id": "sig_1",
+      "alias": "Giám đốc Sở - Nguyễn Văn A",
+      "title": "GIÁM ĐỐC",
+      "position": "GIÁM ĐỐC",
+      "fullname": "Nguyễn Văn A",
+      "signer_type": "Thủ trưởng trực tiếp (GIÁM ĐỐC / HIỆU TRƯỞNG / CHỦ TỊCH)"
+    },
+    {
+      "id": "sig_2",
+      "alias": "Chủ tịch UBND - Trần Văn B",
+      "title": "TM. ỦY BAN NHÂN DÂN\nCHỦ TỊCH",
+      "position": "CHỦ TỊCH",
+      "fullname": "Trần Văn B",
+      "signer_type": "Ký thay mặt UBND (TM. ỦY BAN NHÂN DÂN - CHỦ TỊCH)"
+    },
+    {
+      "id": "sig_3",
+      "alias": "Bí thư Tỉnh ủy - Lê Văn C",
+      "title": "T/M BAN CHẤP HÀNH\nBÍ THƯ",
+      "position": "BÍ THƯ",
+      "fullname": "Lê Văn C",
+      "signer_type": "Ký thay mặt Cấp ủy (T/M BAN CHẤP HÀNH - BÍ THƯ)"
+    },
+    {
+      "id": "sig_party_btv",
+      "alias": "Phó Bí thư - T/M Ban Thường vụ (HD 05)",
+      "title": "T/M BAN THƯỜNG VỤ\nPHÓ BÍ THƯ",
+      "position": "PHÓ BÍ THƯ",
+      "fullname": "Nguyễn Văn A",
+      "signer_type": "Ký thay mặt Ban Thường vụ (T/M BAN THƯỜNG VỤ - PHÓ BÍ THƯ)"
+    },
+    {
+      "id": "sig_party_kt_vp",
+      "alias": "Phó Chánh VP - K/T Chánh Văn phòng (HD 05)",
+      "title": "K/T CHÁNH VĂN PHÒNG\nPHÓ CHÁNH VĂN PHÒNG",
+      "position": "PHÓ CHÁNH VĂN PHÒNG",
+      "fullname": "Lê Khánh Toàn",
+      "signer_type": "Ký thay Chánh Văn phòng Đảng (K/T CHÁNH VĂN PHÒNG - PHÓ CHÁNH VĂN PHÒNG)"
+    },
+    {
+      "id": "sig_party_tl_btv",
+      "alias": "Chánh Văn phòng - T/L Ban Thường vụ (HD 05)",
+      "title": "T/L BAN THƯỜNG VỤ\nCHÁNH VĂN PHÒNG",
+      "position": "CHÁNH VĂN PHÒNG",
+      "fullname": "Trần Văn B",
+      "signer_type": "Ký thừa lệnh Ban Thường vụ (T/L BAN THƯỜNG VỤ - CHÁNH VĂN PHÒNG)"
+    },
+    {
+      "id": "sig_4",
+      "alias": "Bí thư Chi bộ - Phạm Văn D",
+      "title": "T/M CHI BỘ\nBÍ THƯ",
+      "position": "BÍ THƯ CHI BỘ",
+      "fullname": "Phạm Văn D",
+      "signer_type": "Ký thay mặt Chi bộ (T/M CHI BỘ - BÍ THƯ)"
+    },
+    {
+      "id": "sig_5",
+      "alias": "Chánh Văn phòng - Hoàng Văn E",
+      "title": "TL. CHỦ TỊCH\nCHÁNH VĂN PHÒNG",
+      "position": "CHÁNH VĂN PHÒNG",
+      "fullname": "Hoàng Văn E",
+      "signer_type": "Ký thừa lệnh (TL. CHỦ TỊCH / GIÁM ĐỐC - CHÁNH VĂN PHÒNG)"
+    }
+  ]
+}

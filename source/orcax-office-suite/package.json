@@ -1,0 +1,40 @@
+{
+  "name": "orcax-office-suite",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OrcaX Office Suite",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "apps/api",
+    "apps/web-portal",
+    "apps/office-js",
+    "packages/api-contracts",
+    "packages/rule-definitions",
+    "packages/profile-specifications"
+  ],
+  "scripts": {
+    "dev:api": "npm run start:dev -w @orcax/api",
+    "dev:web": "npm run dev -w @orcax/web-portal",
+    "dev:office": "npm run dev -w @orcax/office-js",
+    "build": "npm run build -w @orcax/api && npm run build -w @orcax/web-portal && npm run build -w @orcax/office-js",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test --workspaces --if-present && node --test tests/*/*.test.js",
+    "test:cross": "node --test tests/*/*.test.js",
+    "test:integration": "npm run test:integration -w @orcax/api",
+    "check:foundation": "node scripts/check-foundation.js",
+    "package:dist": "python scripts/build-orcax-package.py",
+    "migration:run": "npm run migration:run -w @orcax/api",
+    "migration:revert": "npm run migration:revert -w @orcax/api",
+    "migration:show": "npm run migration:show -w @orcax/api"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.15.0",
+    "globals": "17.14.0",
+    "prettier": "3.10.1"
+  }
+}

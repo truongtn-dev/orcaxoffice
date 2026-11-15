@@ -1,0 +1,21 @@
+{
+  "name": "@orcax/rule-definitions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Versioned deterministic rule packs and validation report helpers",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@orcax/api-contracts": "0.1.0"
+  }
+}

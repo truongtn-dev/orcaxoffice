@@ -1,0 +1,17 @@
+{
+  "name": "@orcax/office-js",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Office.js Word and Excel add-in adapters",
+  "type": "commonjs",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node --test",
+    "build": "node scripts/copy-static.js",
+    "dev": "node scripts/serve.js"
+  },
+  "dependencies": {
+    "@orcax/api-contracts": "0.1.0",
+    "@orcax/rule-definitions": "0.1.0"
+  }
+}

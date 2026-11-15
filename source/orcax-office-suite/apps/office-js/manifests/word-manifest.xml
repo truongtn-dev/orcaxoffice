@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp"
+>
+  <Id>7c8d9e0f-1a2b-4c3d-8e5f-6a7b8c9d0e1f</Id>
+  <Version>0.1.0</Version>
+  <ProviderName>OrcaX</ProviderName>
+  <DefaultLocale>vi-VN</DefaultLocale>
+  <DisplayName DefaultValue="OrcaX Word" />
+  <Description DefaultValue="Định dạng và kiểm tra tài liệu Word theo hồ sơ chuẩn hóa văn bản Việt Nam." />
+  <IconUrl DefaultValue="https://localhost:3002/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3002/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://localhost:3000/add-in" />
+  <AppDomains>
+    <AppDomain>https://localhost:3002</AppDomain>
+    <AppDomain>http://localhost:3001</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3002/word/taskpane.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
+          </GetStarted>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <CustomTab id="OrcaXWordTab">
+              <!-- Nhóm 1: Chuẩn hóa & Rà soát -->
+              <Group id="StandardizeGroup">
+                <Label resid="Group.Standardize.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="AutoFormatBtn">
+                  <Label resid="Btn.AutoFormat.Label" />
+                  <Supertip>
+                    <Title resid="Btn.AutoFormat.Label" />
+                    <Description resid="Btn.AutoFormat.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="ReviewFormatBtn">
+                  <Label resid="Btn.ReviewFormat.Label" />
+                  <Supertip>
+                    <Title resid="Btn.ReviewFormat.Label" />
+                    <Description resid="Btn.ReviewFormat.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+
+              <!-- Nhóm 2: Chuẩn hóa Thủ công -->
+              <Group id="ManualFormatGroup">
+                <Label resid="Group.Manual.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="HeaderBtn">
+                  <Label resid="Btn.Header.Label" />
+                  <Supertip>
+                    <Title resid="Btn.Header.Label" />
+                    <Description resid="Btn.Header.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="BodyHeadingBtn">
+                  <Label resid="Btn.BodyHeading.Label" />
+                  <Supertip>
+                    <Title resid="Btn.BodyHeading.Label" />
+                    <Description resid="Btn.BodyHeading.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="SignatureBtn">
+                  <Label resid="Btn.Signature.Label" />
+                  <Supertip>
+                    <Title resid="Btn.Signature.Label" />
+                    <Description resid="Btn.Signature.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+
+              <!-- Nhóm 3: Bố cục Trang -->
+              <Group id="PageLayoutGroup">
+                <Label resid="Group.Layout.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="MarginA4Btn">
+                  <Label resid="Btn.MarginA4.Label" />
+                  <Supertip>
+                    <Title resid="Btn.MarginA4.Label" />
+                    <Description resid="Btn.MarginA4.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="LandscapeBtn">
+                  <Label resid="Btn.Landscape.Label" />
+                  <Supertip>
+                    <Title resid="Btn.Landscape.Label" />
+                    <Description resid="Btn.Landscape.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+
+              <!-- Nhóm 4: Công cụ Văn bản -->
+              <Group id="ToolsGroup">
+                <Label resid="Group.Tools.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="PageNumberBtn">
+                  <Label resid="Btn.PageNumber.Label" />
+                  <Supertip>
+                    <Title resid="Btn.PageNumber.Label" />
+                    <Description resid="Btn.PageNumber.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="CleanSpacesBtn">
+                  <Label resid="Btn.CleanSpaces.Label" />
+                  <Supertip>
+                    <Title resid="Btn.CleanSpaces.Label" />
+                    <Description resid="Btn.CleanSpaces.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+
+              <!-- Nhóm 5: Cài đặt & Bản quyền -->
+              <Group id="SettingsGroup">
+                <Label resid="Group.Settings.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneBtn">
+                  <Label resid="Btn.Taskpane.Label" />
+                  <Supertip>
+                    <Title resid="Btn.Taskpane.Label" />
+                    <Description resid="Btn.Taskpane.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="LicenseInfoBtn">
+                  <Label resid="Btn.LicenseInfo.Label" />
+                  <Supertip>
+                    <Title resid="Btn.LicenseInfo.Label" />
+                    <Description resid="Btn.LicenseInfo.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>OrcaXWordPane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+              <Label resid="Tab.OrcaX.Label" />
+            </CustomTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://localhost:3002/assets/icon-16.png" />
+        <bt:Image id="Icon.32" DefaultValue="https://localhost:3002/assets/icon-32.png" />
+        <bt:Image id="Icon.80" DefaultValue="https://localhost:3002/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://localhost:3000/add-in" />
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3002/word/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3002/word/taskpane.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="OrcaX Word" />
+        <bt:String id="Tab.OrcaX.Label" DefaultValue="ORCAX-FORMAT" />
+        
+        <bt:String id="Group.Standardize.Label" DefaultValue="Chuẩn hóa &amp; Rà soát" />
+        <bt:String id="Btn.AutoFormat.Label" DefaultValue="Chuẩn hóa Tự động" />
+        <bt:String id="Btn.ReviewFormat.Label" DefaultValue="Rà soát Thể thức" />
+
+        <bt:String id="Group.Manual.Label" DefaultValue="Chuẩn hóa Thủ công" />
+        <bt:String id="Btn.Header.Label" DefaultValue="Tiêu đề Đầu trang" />
+        <bt:String id="Btn.BodyHeading.Label" DefaultValue="Đề mục &amp; Nội dung" />
+        <bt:String id="Btn.Signature.Label" DefaultValue="Chữ ký &amp; Nơi nhận" />
+
+        <bt:String id="Group.Layout.Label" DefaultValue="Bố cục Trang" />
+        <bt:String id="Btn.MarginA4.Label" DefaultValue="Căn Lề Trang A4" />
+        <bt:String id="Btn.Landscape.Label" DefaultValue="Chèn Trang Ngang" />
+
+        <bt:String id="Group.Tools.Label" DefaultValue="Công cụ Văn bản" />
+        <bt:String id="Btn.PageNumber.Label" DefaultValue="Đánh số Trang" />
+        <bt:String id="Btn.CleanSpaces.Label" DefaultValue="Xóa khoảng trắng lỗi" />
+
+        <bt:String id="Group.Settings.Label" DefaultValue="Biểu mẫu &amp; Cài đặt" />
+        <bt:String id="Btn.Taskpane.Label" DefaultValue="Bảng điều khiển" />
+        <bt:String id="Btn.LicenseInfo.Label" DefaultValue="Thông tin bản quyền" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Mở task pane để chuẩn hóa văn bản theo Nghị định 30/2020/NĐ-CP." />
+        <bt:String id="Btn.AutoFormat.Tooltip" DefaultValue="Tự động kiểm tra và chuẩn hóa thể thức toàn văn bản." />
+        <bt:String id="Btn.ReviewFormat.Tooltip" DefaultValue="Rà soát đối chiếu thể thức văn bản hành chính." />
+        <bt:String id="Btn.Header.Tooltip" DefaultValue="Chuẩn hóa Quốc hiệu, Tiêu ngữ và Tên cơ quan ban hành." />
+        <bt:String id="Btn.BodyHeading.Tooltip" DefaultValue="Chuẩn hóa phông chữ, cỡ chữ và cấp bậc đề mục nội dung." />
+        <bt:String id="Btn.Signature.Tooltip" DefaultValue="Chuẩn hóa phần ký tên, chức vụ và nơi nhận văn bản." />
+        <bt:String id="Btn.MarginA4.Tooltip" DefaultValue="Căn lề chuẩn A4 theo Nghị định 30 (Trên 20mm, Dưới 20mm, Trái 30mm, Phải 15mm)." />
+        <bt:String id="Btn.Landscape.Tooltip" DefaultValue="Chèn ngắt phần và định dạng trang in nằm ngang." />
+        <bt:String id="Btn.PageNumber.Tooltip" DefaultValue="Đánh số trang tự động ở chính giữa phần đầu trang." />
+        <bt:String id="Btn.CleanSpaces.Tooltip" DefaultValue="Tự động xóa các khoảng trắng thừa, ngắt dòng sai quy tắc." />
+        <bt:String id="Btn.Taskpane.Tooltip" DefaultValue="Mở bảng điều khiển OrcaX Word." />
+        <bt:String id="Btn.LicenseInfo.Tooltip" DefaultValue="Xem thông tin gói bản quyền và kích hoạt thiết bị." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
