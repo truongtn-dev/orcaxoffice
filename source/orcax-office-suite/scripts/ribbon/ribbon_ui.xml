@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  ORCAX WORKBENCH - Ribbon UI v2.0 (thiet ke moi, khong con di san V-FORMAT)
+  8 nhom danh so theo quy trinh soan thao van thu:
+  01 Dieu hanh -> 02 Quy chuan -> 03 Chuan hoa tung phan -> 04 Ra soat
+  -> 05 Soan nhanh -> 06 Bo cuc -> 07 Bieu mau -> 08 OrcaX
+  Icon: thuong hieu duotone navy/teal, nhung tinh qua customUI rels (build_orcax_ui.py).
+  Quy uoc icon: image="ico_xxx" = ban 32px (nut lon), image="ico_s_xxx" = ban 16px (nut nho).
+-->
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_OnLoad">
+  <ribbon>
+    <tabs>
+      <tab id="tabOrcaXOffice" label="ORCAX OFFICE">
+
+        <!-- ============ 01. DIEU HANH ============ -->
+        <group id="grpExecutive" label="Điều hành">
+          <splitButton id="sbtnAutoStandardize" size="large">
+            <button id="btnAutoStandardize" label="Chuẩn hóa&#10;Toàn diện" image="ico_bolt"
+                    onAction="Ribbon_AutoStandardize"
+                    screentip="Chuẩn hóa Thể thức Tự động 1-Click"
+                    supertip="Tự động nhận diện quy chuẩn (Đảng HD 05 hoặc Hành chính NĐ 30), thiết lập khổ giấy A4, căn lề, phông chữ, cỡ chữ, căn giữa tên loại văn bản, in đậm các đề mục, tự chèn thành phần thiếu và xuất bảng báo cáo chi tiết kèm khả năng hoàn tác."/>
+            <menu id="mnuAutoStandardizeVariants">
+              <button id="btnAutoQuiet" label="Chuẩn hóa Im lặng (không hỏi)" image="ico_s_bolt"
+                      onAction="Ribbon_AutoStandardizeQuiet"
+                      screentip="Chuẩn hóa Im lặng"
+                      supertip="Áp dụng toàn bộ chuẩn hóa theo quy chuẩn đang chọn mà không hiển thị hộp thoại xác nhận nào. Phù hợp xử lý hàng loạt tài liệu đơn giản."/>
+              <button id="btnAutoDetectFirst" label="Chỉ Phân tích (không chỉnh sửa)" image="ico_s_search_doc"
+                      onAction="Ribbon_DetectDocument"
+                      screentip="Chỉ Phân tích Văn bản"
+                      supertip="Phân tích quy chuẩn, cấp bậc và loại văn bản mà không thay đổi nội dung."/>
+            </menu>
+          </splitButton>
+          <button id="btnDetectDoc" label="Phân tích&#10;Văn bản" size="large" image="ico_search_doc"
+                  onAction="Ribbon_DetectDocument"
+                  screentip="Nhận diện Quy chuẩn &amp;&amp; Thể loại Văn bản"
+                  supertip="Tự động phân tích văn bản để xác định Quy chuẩn áp dụng (Nghị định 30, HD 05, NĐ 250), Cấp bậc cơ quan và Loại văn bản."/>
+          <button id="btnAuditHub" label="Trung tâm&#10;Kiểm soát" size="large" image="ico_hub"
+                  onAction="Ribbon_OpenAuditHub"
+                  screentip="Trung tâm Kiểm soát OrcaX (Control Center)"
+                  supertip="Mở bảng điều khiển trung tâm: điểm tuân thủ thể thức, danh mục lỗi theo mức độ, và toàn bộ nút hành động nhanh của OrcaX."/>
+          <box id="boxExecSmall" boxStyle="vertical">
+            <button id="btnUndoStandardize" label="Khôi phục nguyên trạng" size="normal" image="ico_s_undo"
+                    onAction="Ribbon_UndoStandardize"
+                    screentip="Khôi phục Trạng thái Ban đầu"
+                    supertip="Khôi phục nguyên vẹn trạng thái văn bản trước khi thực hiện Chuẩn hóa Tự động."/>
+            <button id="btnQuickAudit" label="Rà soát nhanh" size="normal" image="ico_s_checklist"
+                    onAction="RunQuickAuditReport"
+                    screentip="Rà soát nhanh"
+                    supertip="Kiểm tra nhanh khổ giấy, căn lề, phông chữ và Quốc hiệu, tổng hợp kết quả trong một hộp thoại duy nhất."/>
+          </box>
+        </group>
+
+        <!-- ============ 02. QUY CHUAN ============ -->
+        <group id="grpRegulation" label="Quy chuẩn">
+          <box id="boxRegulationPickers" boxStyle="vertical">
+            <dropDown id="ddRegulation" label="Quy chuẩn:" sizeString="Hành chính (NĐ 30)"
+                      getSelectedItemIndex="Ribbon_GetDefaultRegulation" onAction="Ribbon_SelectRegulation"
+                      screentip="Quy chuẩn áp dụng"
+                      supertip="Chọn quy chuẩn: Hành chính (NĐ 30), VB Đảng (HD 05), hoặc Văn bản Hợp nhất (NĐ 250).">
+              <item id="regND30" label="Hành chính (NĐ 30)"/>
+              <item id="regDANG" label="VB Đảng (HD 05)"/>
+              <item id="regVBHN" label="Hợp nhất (NĐ 250)"/>
+            </dropDown>
+            <dropDown id="ddOrgLevel" label="Cấp bậc:" sizeString="Hành chính (NĐ 30)"
+                      getSelectedItemIndex="Ribbon_GetDefaultOrgLevel" onAction="Ribbon_SelectOrgLevel"
+                      screentip="Cấp bậc cơ quan ban hành"
+                      supertip="Chọn cấp bậc: Cấp Bộ, Cục/Tổng cục thuộc Bộ, Cấp Tỉnh/Tỉnh ủy, Cấp Sở/Ban, Cấp Xã/Phường, hoặc Cấp Chi bộ.">
+              <item id="lvlAuto" label="(Tự nhận diện)"/>
+              <item id="lvlBo" label="Cấp Bộ / Ngang Bộ"/>
+              <item id="lvlCuc" label="Cục, Tổng cục (Bộ)"/>
+              <item id="lvlTinh" label="Cấp Tỉnh / Tỉnh ủy"/>
+              <item id="lvlSo" label="Cấp Sở / Ban / Ngành"/>
+              <item id="lvlXa" label="Cấp Xã / Phường"/>
+              <item id="lvlChiBo" label="Cấp Chi bộ / Chi ủy"/>
+            </dropDown>
+            <dropDown id="ddDocType" label="Loại VB:" sizeString="Hành chính (NĐ 30)"
+                      getSelectedItemIndex="Ribbon_GetDefaultDocType" onAction="Ribbon_SelectDocType"
+                      screentip="Loại văn bản"
+                      supertip="Loại văn bản được nhận diện hoặc tự chọn (Công văn, Quyết định, Tờ trình, Kế hoạch, Báo cáo...).">
+              <item id="dtAuto" label="(Tự nhận diện)"/>
+              <item id="dtCongVan" label="Công văn"/>
+              <item id="dtQuyetDinh" label="Quyết định"/>
+              <item id="dtNghiQuyet" label="Nghị quyết"/>
+              <item id="dtToTrinh" label="Tờ trình"/>
+              <item id="dtKeHoach" label="Kế hoạch"/>
+              <item id="dtBaoCao" label="Báo cáo"/>
+              <item id="dtThongBao" label="Thông báo"/>
+              <item id="dtBienBan" label="Biên bản"/>
+              <item id="dtVBHN" label="VB Hợp nhất"/>
+              <item id="dtKHBD" label="Kế hoạch bài dạy (CV 5512)"/>
+              <item id="dtGiayNghiPhep" label="Giấy nghỉ phép"/>
+              <item id="dtGiayMoi" label="Giấy mời"/>
+              <item id="dtGiayGioiThieu" label="Giấy giới thiệu"/>
+              <item id="dtCongDien" label="Công điện"/>
+              <item id="dtPhuLuc" label="Phụ lục VB"/>
+              <item id="dtBanSao" label="Bản sao VB"/>
+            </dropDown>
+          </box>
+          <button id="btnDocMetadata" label="Thông tin&#10;Văn bản" size="large" image="ico_id_card"
+                  onAction="Ribbon_OpenDocMetadata"
+                  screentip="Thông tin &amp;&amp; Thuộc tính Văn bản (Metadata)"
+                  supertip="Quản lý Số/ký hiệu, Ngày ban hành, Địa danh, Cơ quan, Người ký và Trích yếu, điền nhanh vào khung tiêu đề và khung chữ ký của văn bản."/>
+</group>
+
+        <!-- ============ 03. CHUAN HOA TUNG PHAN ============ -->
+        <group id="grpManualSteps" label="Chuẩn hóa Từng phần">
+          <button id="btnManualHeader" label="Tiêu đề&#10;Đầu trang" size="large" image="ico_heading"
+                  onAction="Ribbon_ManualFormatHeader"
+                  screentip="Bước 1: Chuẩn hóa Khung Tiêu đề &amp;&amp; Quốc hiệu"
+                  supertip="Chuẩn hóa hoặc tự động bổ sung khối Quốc hiệu/Tiêu ngữ (hoặc Tiêu đề Đảng), Tên cơ quan, Số &amp;&amp; Ký hiệu và Ngày tháng theo đúng quy chuẩn đang chọn (HD 05 hoặc NĐ 30)."/>
+          <button id="btnManualTitle" label="Tên loại&#10;&amp;&amp; Trích yếu" size="large" image="ico_text_center"
+                  onAction="Ribbon_ManualFormatTitle"
+                  screentip="Bước 2: Căn giữa Tên loại VB &amp;&amp; Trích yếu"
+                  supertip="Tự động nhận diện Tên loại văn bản (Quyết định, Nghị quyết, Tờ trình, Kế hoạch, Báo cáo...), căn giữa, in đậm và định dạng dòng trích yếu."/>
+          <button id="btnManualBody" label="Đề mục&#10;&amp;&amp; Nội dung" size="large" image="ico_justify"
+                  onAction="Ribbon_ManualFormatBody"
+                  screentip="Bước 3: Chuẩn hóa Đề mục &amp;&amp; Thân bài"
+                  supertip="Căn đều 2 lề, thụt đầu dòng 1cm, giãn dòng 1.15 / 19pt, giãn đoạn 6pt; tự động nhận diện và in đậm các cấp đề mục (Phần, Chương, Mục, Điều, Khoản, Điểm) và in nghiêng căn cứ pháp lý."/>
+          <button id="btnManualSignature" label="Chữ ký &amp;&amp;&#10;Nơi nhận" size="large" image="ico_pen"
+                  onAction="Ribbon_ManualFormatSignature"
+                  screentip="Bước 4: Chuẩn hóa Khung Chữ ký &amp;&amp; Nơi nhận"
+                  supertip="Chuẩn hóa hoặc bổ sung khung Nơi nhận bên trái, chức vụ &amp;&amp; chữ ký người ký bên phải theo đúng thẩm quyền và thể thức quy định."/>
+          <box id="boxManualSmall" boxStyle="vertical">
+            <button id="btnUnicodeConvert" label="Chuyển mã Unicode" size="normal" imageMso="ReplaceDialog"
+                    onAction="Ribbon_ConvertOldFontsToUnicode"
+                    screentip="Chuyển đổi phông chữ sang chuẩn Unicode"
+                    supertip="Chuyển đổi các văn bản tiếng Việt gõ bằng phông chữ cũ (TCVN3 .VnTime, VNI-Times) sang chuẩn Unicode (Times New Roman)."/>
+            <button id="btnFixToneMarks" label="Sửa dấu thanh" size="normal" imageMso="SpellingAndGrammar"
+                    onAction="Ribbon_FixToneMarks"
+                    screentip="Sửa dấu thanh toàn văn bản"
+                    supertip="Tự động quét và chuẩn hóa toàn bộ dấu thanh trong văn bản từ dạng cũ (oà, uý, hoà, thuỷ, toà...) sang dạng chuẩn mới (òa, úy, hòa, thủy, tòa...)."/>
+          </box>
+        </group>
+
+        <!-- ============ 04. RA SOAT & DOI CHIEU ============ -->
+        <group id="grpAudit" label="Rà soát &amp;&amp; Đối chiếu">
+          <button id="btnAuditDoc" label="Rà soát&#10;Thể thức" size="large" image="ico_checklist"
+                  onAction="Ribbon_AuditDocument"
+                  screentip="Rà soát Thể thức Văn bản"
+                  supertip="Kiểm tra chi tiết khổ giấy, 4 lề, phông chữ, cỡ chữ và các thành phần thể thức theo đúng quy chuẩn đang chọn, liệt kê chi tiết các thành phần cần chỉnh sửa."/>
+          <button id="btnAuditWritingStyle" label="Soát Văn phong&#10;Công vụ" size="large" image="ico_grammar"
+                  onAction="Ribbon_AuditWritingStyle"
+                  screentip="Bộ Soát Văn phong Công vụ &amp;&amp; Hành chính"
+                  supertip="Quét toàn văn bản để phát hiện và sửa từ ngữ sáo rỗng, khẩu hiệu, đa nghĩa, từ địa phương và văn phong không phù hợp công vụ theo quy định chuẩn."/>
+          <button id="btnCompareDrafts" label="So sánh&#10;Dự thảo" size="large" image="ico_compare"
+                  onAction="Ribbon_CompareDocuments"
+                  screentip="So sánh &amp;&amp; Đối chiếu 2 Bản Dự thảo (Legal Blackline)"
+                  supertip="Chọn 2 văn bản Word để đối chiếu, hiển thị bảng Track Changes chi tiết các điểm sửa đổi, thêm bớt giữa bản gốc và bản sửa đổi."/>
+          <button id="btnExportArchivePDF" label="Xuất PDF&#10;Lưu trữ" size="large" image="ico_report"
+                  onAction="Ribbon_ExportArchivePDF"
+                  screentip="Xuất PDF/A Chuẩn Lưu trữ Quốc gia"
+                  supertip="Xuất văn bản sang định dạng PDF/A chuẩn lưu trữ hồ sơ công vụ nhà nước, nhúng toàn bộ phông chữ Unicode dựng sẵn."/>
+          <menu id="mnuDocStructure" label="Cấu trúc&#10;Nâng cao" size="large" image="ico_toc"
+                screentip="Công cụ Cấu trúc Tài liệu Nâng cao"
+                supertip="Mục lục tự động, chuẩn hóa Heading 1/2/3, đánh số đa cấp hành chính, danh mục bảng biểu, lịch sử chuẩn hóa và xuất báo cáo rà soát.">
+            <button id="btnInsertAutoTOC" image="ico_s_toc" label="Mục lục tự động (Heading 1-3)"
+                    onAction="Ribbon_InsertAutoTOC"
+                    screentip="Tạo / cập nhật Mục lục tự động"
+                    supertip="Tạo mới hoặc cập nhật Mục lục tự động theo Heading 1-3, kèm số trang căn phải."/>
+            <button id="btnFormatHeading1" image="ico_s_heading" label="Đề mục cấp 1 (Heading 1 - Phần/Chương)"
+                    onAction="Ribbon_FormatHeading1"/>
+            <button id="btnFormatHeading2" image="ico_s_heading" label="Đề mục cấp 2 (Heading 2 - Mục)"
+                    onAction="Ribbon_FormatHeading2"/>
+            <button id="btnFormatHeading3" image="ico_s_heading" label="Đề mục cấp 3 (Heading 3 - Điều/Khoản)"
+                    onAction="Ribbon_FormatHeading3"/>
+            <button id="btnFormatMultilevel" image="ico_s_layers" label="Đánh số đa cấp hành chính (I., 1., a), ...)"
+                    onAction="Ribbon_FormatMultilevelList"/>
+            <button id="btnTableOfFigures" image="ico_s_grid" label="Danh mục Bảng biểu / Hình ảnh"
+                    onAction="Ribbon_InsertTableOfFigures"/>
+            <menuSeparator id="sepAuditTools"/>
+            <button id="btnAuditHistory" image="ico_s_undo" label="Lịch sử chuẩn hóa &amp;&amp; Khôi phục"
+                    onAction="Ribbon_ShowAuditHistory"/>
+            <button id="btnExportAuditReport" image="ico_s_report" label="Xuất báo cáo rà soát thể thức"
+                    onAction="Ribbon_ExportAuditReport"/>
+          </menu>
+        </group>
+
+        <!-- ============ 05. SOAN NHANH (DYNAMIC PRESETS) ============ -->
+        <group id="grpQuickInsert" label="Soạn nhanh">
+          <splitButton id="sbtnInsertAgency" size="large">
+            <button id="btnInsQuocHieuAuto" label="Chèn Cơ quan&#10;(Tự động)" image="ico_building"
+                    onAction="Ribbon_InsertQuocHieuAuto"
+                    screentip="Chèn Tiêu đề Cơ quan (Tự động theo Quy chuẩn &amp;&amp; Cấp bậc)"
+                    supertip="Chèn khối Quốc hiệu/Tiêu ngữ và Tên cơ quan đúng theo quy chuẩn và cấp bậc đang chọn ngay tại vị trí con trỏ."/>
+            <menu id="mnuAgenciesDyn">
+              <dynamicMenu id="dmAgenciesAdmin" label="Cơ quan Hành chính của tôi (NĐ 30)"
+                           getContent="Ribbon_GetAgenciesContent" screentip="Danh sách cơ quan đã lưu trong Cá nhân hóa" image="ico_s_building"/>
+              <dynamicMenu id="dmAgenciesParty" label="Cơ quan Đảng của tôi (HD 05)"
+                           getContent="Ribbon_GetPartyContent" screentip="Danh sách cơ quan Đảng đã lưu trong Cá nhân hóa" image="ico_s_whale"/>
+              <menuSeparator id="sepAgencyStatic"/>
+              <button id="btnInsQuocHieuND30" label="Mẫu Quốc hiệu &amp;&amp; Cơ quan chuẩn chung (NĐ 30)"
+                      onAction="Ribbon_InsertQuocHieuND30" image="ico_s_building"/>
+              <button id="btnInsDangHeader" label="Mẫu ĐẢNG CỘNG SẢN VIỆT NAM &amp;&amp; Cơ quan Đảng (HD 05)"
+                      onAction="Ribbon_InsertDangHeader" image="ico_s_building"/>
+              <button id="btnInsPhuLucHeader" image="ico_s_doc_plain" label="Khung Tiêu đề Phụ lục văn bản (Theo NĐ 30)"
+                      onAction="Ribbon_InsertPhuLucHeader"/>
+              <button id="btnInsBanSaoHeader" label="Khung Bản sao văn bản (Sao y, Sao lục, Trích sao)"
+                      onAction="Ribbon_InsertBanSaoHeader" image="ico_s_grid"/>
+            </menu>
+          </splitButton>
+          <splitButton id="sbtnInsertSignature" size="large">
+            <button id="btnInsSigAuto" label="Chèn Chữ ký&#10;&amp;&amp; Nơi nhận" image="ico_user_pen"
+                    onAction="Ribbon_InsertSigAuto"
+                    screentip="Chèn Chữ ký &amp;&amp; Nơi nhận (Tự động theo Quy chuẩn &amp;&amp; Cấp bậc)"
+                    supertip="Chèn khung Nơi nhận bên trái và khung Chức vụ &amp;&amp; Chữ ký bên phải đúng thẩm quyền tại vị trí con trỏ."/>
+            <menu id="mnuSignaturesDyn">
+              <dynamicMenu id="dmSigners" label="Chữ ký Lãnh đạo của tôi"
+                           getContent="Ribbon_GetSignersContent" screentip="Danh sách người ký đã lưu trong Cá nhân hóa" image="ico_s_user_pen"/>
+              <dynamicMenu id="dmRecipients" label="Mẫu Nơi nhận của tôi"
+                           getContent="Ribbon_GetRecipientsContent" screentip="Danh sách mẫu Nơi nhận đã lưu trong Cá nhân hóa" image="ico_s_inbox"/>
+              <menuSeparator id="sepSigStatic"/>
+              <menu id="mnuSigSpecial" label="Ký thay mặt / Ký thay / Ký thừa (Mẫu chuẩn)" imageMso="SignatureLineInsert">
+                <button id="btnInsSigBCH" image="ico_s_user_pen" label="TM. BAN CHẤP HÀNH - BÍ THƯ (Cấp ủy Đảng)" onAction="Ribbon_InsertSigBCH"/>
+                <button id="btnInsSigBTV" image="ico_s_user_pen" label="TM. BAN THƯỜNG VỤ - PHÓ BÍ THƯ (Đảng)" onAction="Ribbon_InsertSigBTV"/>
+                <button id="btnInsSigChiBo" image="ico_s_user_pen" label="T/M CHI BỘ - BÍ THƯ" onAction="Ribbon_InsertSigChiBo"/>
+                <button id="btnInsSigChiBoPho" image="ico_s_user_pen" label="T/M CHI BỘ - PHÓ BÍ THƯ" onAction="Ribbon_InsertSigChiBoPho"/>
+                <button id="btnInsSigDangUyXa" image="ico_s_user_pen" label="TM. BAN CHẤP HÀNH - BÍ THƯ (Đảng ủy Xã/Phường)" onAction="Ribbon_InsertSigDangUyXa"/>
+                <button id="btnInsSigUBND" image="ico_s_user_pen" label="TM. ỦY BAN NHÂN DÂN - CHỦ TỊCH (Tỉnh/TP)" onAction="Ribbon_InsertSigUBND"/>
+                <button id="btnInsSigUBNDXa" image="ico_s_user_pen" label="TM. ỦY BAN NHÂN DÂN - CHỦ TỊCH (Xã/Phường)" onAction="Ribbon_InsertSigUBNDXa"/>
+                <button id="btnInsSigThuTruong" image="ico_s_user_pen" label="GIÁM ĐỐC / HIỆU TRƯỞNG (Thủ trưởng đơn vị)" onAction="Ribbon_InsertSigThuTruong"/>
+              </menu>
+              <menu id="mnuSigDeputy" label="Ký thay (KT), Ký thừa lệnh (TL), Ủy quyền (TUQ), Ký quyền (Q)" imageMso="SignatureLineInsert">
+                <button id="btnInsSigKT" image="ico_s_pen" label="KT. (Ký thay) - Phó chức danh" onAction="Ribbon_InsertSigKT"/>
+                <button id="btnInsSigTL" image="ico_s_pen" label="TL. (Ký thừa lệnh) - CHÁNH VĂN PHÒNG" onAction="Ribbon_InsertSigTL"/>
+                <button id="btnInsSigTUQ" image="ico_s_pen" label="TUQ. (Ký thừa ủy quyền)" onAction="Ribbon_InsertSigTUQ"/>
+                <button id="btnInsSigQuyen" image="ico_s_pen" label="Q. (Ký quyền)" onAction="Ribbon_InsertSigQuyen"/>
+              </menu>
+              <button id="btnInsertDigitalSig" image="ico_s_key" label="Chèn khung Ký số điện tử (Theo NĐ 30)"
+                      onAction="Ribbon_InsertDigitalSignature"
+                      screentip="Chèn khung Ký số điện tử"
+                      supertip="Chèn mẫu chữ ký số cơ quan/tổ chức đúng quy định Nghị định 30/2020/NĐ-CP."/>
+            </menu>
+          </splitButton>
+          <menu id="mnuInsertTitles" label="Tiêu đề&#10;Loại VB" size="large" image="ico_doc_type"
+                screentip="Chèn Tên loại văn bản &amp;&amp; Trích yếu"
+                supertip="Chèn ngay tiêu đề QUYẾT ĐỊNH, NGHỊ QUYẾT, CÔNG VĂN, TỜ TRÌNH... kèm dòng trích yếu chuẩn tại vị trí con trỏ.">
+            <button id="btnInsTitleCongVan" image="ico_s_mail" label="Trích yếu Công văn (Kính gửi / Kính trình...)" onAction="Ribbon_InsertTitleCongVan"/>
+            <button id="btnInsTitleQuyetDinh" image="ico_s_stamp" label="Tiêu đề QUYẾT ĐỊNH (Trực tiếp) &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleQuyetDinh"/>
+            <button id="btnInsTitleQuyetDinhQuyChe" image="ico_s_stamp" label="Tiêu đề QUYẾT ĐỊNH (Ban hành Quy chế/Đề án)" onAction="Ribbon_InsertTitleQuyetDinhQuyChe"/>
+            <button id="btnInsTitleNghiQuyet" image="ico_s_star" label="Tiêu đề NGHỊ QUYẾT &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleNghiQuyet"/>
+            <button id="btnInsTitleToTrinh" image="ico_s_doc_plain" label="Tiêu đề TỜ TRÌNH &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleToTrinh"/>
+            <button id="btnInsTitleKeHoach" image="ico_s_calendar" label="Tiêu đề KẾ HOẠCH &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleKeHoach"/>
+            <button id="btnInsTitleBaoCao" image="ico_s_chart_bar" label="Tiêu đề BÁO CÁO &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleBaoCao"/>
+            <button id="btnInsTitleThongBao" image="ico_s_text_center" label="Tiêu đề THÔNG BÁO &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleThongBao"/>
+            <button id="btnInsTitleBienBan" image="ico_s_people" label="Tiêu đề BIÊN BẢN &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleBienBan"/>
+            <button id="btnInsTitleCongDien" image="ico_s_bolt" label="Tiêu đề CÔNG ĐIỆN &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleCongDien"/>
+            <button id="btnInsTitleGiayMoi" image="ico_s_mail" label="Tiêu đề GIẤY MỜI &amp;&amp; Trích yếu" onAction="Ribbon_InsertTitleGiayMoi"/>
+            <button id="btnInsTitleGiayGioiThieu" image="ico_s_badge" label="Tiêu đề GIẤY GIỚI THIỆU" onAction="Ribbon_InsertTitleGiayGioiThieu"/>
+            <button id="btnInsTitleGiayNghiPhep" image="ico_s_badge" label="Tiêu đề GIẤY NGHỈ PHÉP" onAction="Ribbon_InsertTitleGiayNghiPhep"/>
+          </menu>
+          <menu id="mnuMarksAndFooter" label="Khẩn / Mật&#10;&amp;&amp; Chân trang" size="large" image="ico_shield"
+                screentip="Độ khẩn, Độ mật, Phạm vi &amp;&amp; Chân trang"
+                supertip="Chèn dấu chỉ độ khẩn (HỎA TỐC, THƯỢNG KHẨN, KHẨN), độ mật (MẬT, TỐI MẬT, TUYỆT MẬT), chỉ dẫn phạm vi và thông tin chân trang cơ quan.">
+            <menu id="mnuDoKhan" label="Dấu chỉ độ khẩn" imageMso="ReviewShowMarkupMenu">
+              <button id="btnInsDoKhanHoaToc" image="ico_s_shield" label="HỎA TỐC" onAction="Ribbon_InsertDoKhanHoaToc"/>
+              <button id="btnInsDoKhanThuongKhan" image="ico_s_shield" label="THƯỢNG KHẨN" onAction="Ribbon_InsertDoKhanThuongKhan"/>
+              <button id="btnInsDoKhanKhan" image="ico_s_shield" label="KHẨN" onAction="Ribbon_InsertDoKhanKhan"/>
+            </menu>
+            <menu id="mnuDoMat" label="Dấu chỉ độ mật" imageMso="ReviewShowMarkupMenu">
+              <button id="btnInsDoMatMat" image="ico_s_shield" label="MẬT" onAction="Ribbon_InsertDoMatMat"/>
+              <button id="btnInsDoMatToiMat" image="ico_s_shield" label="TỐI MẬT" onAction="Ribbon_InsertDoMatToiMat"/>
+              <button id="btnInsDoMatTuyetMat" image="ico_s_shield" label="TUYỆT MẬT" onAction="Ribbon_InsertDoMatTuyetMat"/>
+            </menu>
+            <menu id="mnuPhamVi" label="Chỉ dẫn phạm vi" imageMso="ReviewShowMarkupMenu">
+              <button id="btnInsPhamViLuuHanh" image="ico_s_shield" label="LƯU HÀNH NỘI BỘ" onAction="Ribbon_InsertPhamViLuuHanh"/>
+              <button id="btnInsPhamViXemXongTraLai" image="ico_s_shield" label="XEM XONG TRẢ LẠI" onAction="Ribbon_InsertPhamViXemXongTraLai"/>
+            </menu>
+            <menuSeparator id="sepMarksFooter"/>
+            <button id="btnInsFooterAgencyInfo" image="ico_s_grid" label="Thông tin Chân trang cơ quan (Địa chỉ, ĐT, Fax, Web)"
+                    onAction="Ribbon_InsertFooterAgencyInfo"/>
+          </menu>
+        </group>
+
+        <!-- ============ 06. BO CUC TRANG ============ -->
+        <group id="grpPageLayout" label="Bố cục Trang">
+          <button id="btnPageSetupA4" label="Căn Lề&#10;Trang A4" size="large" image="ico_ruler_page"
+                  onAction="Ribbon_PageSetup"
+                  screentip="Tự động căn lề trang A4"
+                  supertip="Thiết lập khổ giấy A4 và căn chỉnh lề Trên, Dưới, Trái, Phải chuẩn xác theo quy chuẩn văn bản đang chọn."/>
+          <button id="btnPageNum" label="Đánh số&#10;Trang" size="large" image="ico_page_num"
+                  onAction="Ribbon_InsertPageNumbers"
+                  screentip="Tự động đánh số trang theo quy chuẩn"
+                  supertip="Đánh số trang chuẩn xác theo quy chuẩn: Căn giữa lề trên (13-14pt Times New Roman), tự động ẩn số trang ở trang đầu tiên."/>
+          <box id="boxPageTools" boxStyle="vertical">
+            <button id="btnLandscapePage" label="Chèn trang ngang" size="normal" image="ico_s_landscape"
+                    onAction="Ribbon_InsertLandscapePage"
+                    screentip="Chèn trang ngang"
+                    supertip="Ngắt phân vùng và chuyển trang mới sang khổ nằm ngang (297x210mm)."/>
+            <button id="btnPortraitPage" label="Chèn trang dọc" size="normal" image="ico_s_portrait"
+                    onAction="Ribbon_InsertPortraitPage"
+                    screentip="Chèn trang dọc"
+                    supertip="Ngắt phân vùng và chuyển trang mới sang khổ đứng chuẩn (210x297mm)."/>
+            <button id="btnDeleteBlankPages" label="Xóa trang trắng" size="normal" image="ico_s_broom"
+                    onAction="Ribbon_DeleteBlankPages"
+                    screentip="Xóa trang trắng thừa"
+                    supertip="Tự động tìm và xóa các trang trắng, ngắt trang và dòng trống thừa vô nghĩa ở cuối tài liệu."/>
+          </box>
+        </group>
+
+        <!-- ============ 07. BIEU MAU ============ -->
+        <group id="grpTemplates" label="Biểu mẫu">
+          <menu id="mnuDocTemplates" label="Thư viện&#10;Biểu mẫu" size="large" image="ico_grid"
+                screentip="Thư viện Biểu mẫu chuẩn Quốc gia (59 mẫu)"
+                supertip="Mở nhanh các biểu mẫu chuẩn theo Nghị định 30/2020/NĐ-CP và Hướng dẫn 05-HD/VPTW, chia theo cấp cơ quan.">
+            <menu id="mnuTplAdmin" label="Cấp Bộ, Tỉnh &amp;&amp; Sở Ban Ngành (NĐ 30)" image="ico_s_grid">
+              <button id="tplCV" image="ico_s_mail" label="Mẫu Công văn hành chính" onAction="Ribbon_InsertTplCongVan"/>
+              <button id="tplQD" image="ico_s_stamp" label="Mẫu Quyết định trực tiếp" onAction="Ribbon_InsertTplQuyetDinh"/>
+              <button id="tplQDQC" image="ico_s_stamp" label="Mẫu Quyết định ban hành Quy chế" onAction="Ribbon_InsertTplQuyetDinhQuyChe"/>
+              <button id="tplNQCB" image="ico_s_star" label="Mẫu Nghị quyết cá biệt" onAction="Ribbon_InsertTplNghiQuyetCaBiet"/>
+              <button id="tplChiThi" image="ico_s_compass" label="Mẫu Chỉ thị hành chính" onAction="Ribbon_InsertTplChiThi"/>
+              <button id="tplHuongDan" image="ico_s_toc" label="Mẫu Hướng dẫn chuyên môn" onAction="Ribbon_InsertTplHuongDan"/>
+              <button id="tplQuyDinh" image="ico_s_shield" label="Mẫu Quy định kèm quyết định" onAction="Ribbon_InsertTplQuyDinh"/>
+              <button id="tplDeAn" image="ico_s_layers" label="Mẫu Đề án phát triển" onAction="Ribbon_InsertTplDeAn"/>
+              <button id="tplTT" image="ico_s_doc_plain" label="Mẫu Tờ trình" onAction="Ribbon_InsertTplToTrinh"/>
+              <button id="tplKH" image="ico_s_calendar" label="Mẫu Kế hoạch" onAction="Ribbon_InsertTplKeHoach"/>
+              <button id="tplBC" image="ico_s_chart_bar" label="Mẫu Báo cáo" onAction="Ribbon_InsertTplBaoCao"/>
+              <button id="tplTB" image="ico_s_text_center" label="Mẫu Thông báo" onAction="Ribbon_InsertTplThongBao"/>
+              <button id="tplBB" image="ico_s_people" label="Mẫu Biên bản" onAction="Ribbon_InsertTplBienBan"/>
+              <button id="tplCD" image="ico_s_bolt" label="Mẫu Công điện" onAction="Ribbon_InsertTplCongDien"/>
+              <button id="tplGM" image="ico_s_mail" label="Mẫu Giấy mời" onAction="Ribbon_InsertTplGiayMoi"/>
+              <button id="tplGGT" image="ico_s_badge" label="Mẫu Giấy giới thiệu" onAction="Ribbon_InsertTplGiayGioiThieu"/>
+              <button id="tplGNP" image="ico_s_badge" label="Mẫu Giấy nghỉ phép" onAction="Ribbon_InsertTplGiayNghiPhep"/>
+              <button id="tplGUQ" image="ico_s_key" label="Mẫu Giấy ủy quyền" onAction="Ribbon_InsertTplGiayUyQuyen"/>
+              <button id="tplPhieuChuyen" image="ico_s_inbox" label="Mẫu Phiếu chuyển văn bản/đơn" onAction="Ribbon_InsertTplPhieuChuyen"/>
+              <button id="tplPhuLuc" image="ico_s_doc_plain" label="Mẫu Phụ lục văn bản" onAction="Ribbon_InsertTplPhuLuc"/>
+              <button id="tplBanSao" image="ico_s_copy_doc" label="Mẫu Bản sao văn bản" onAction="Ribbon_InsertTplBanSao"/>
+            </menu>
+            <menu id="mnuTplXa" label="Cấp Xã / Phường / Đặc khu (NĐ 30)" image="ico_s_grid">
+              <button id="tplXaCV" image="ico_s_mail" label="Mẫu Công văn UBND Xã/Phường" onAction="Ribbon_InsertTplXaCV"/>
+              <button id="tplXaQD" image="ico_s_stamp" label="Mẫu Quyết định UBND Xã/Phường" onAction="Ribbon_InsertTplXaQD"/>
+              <button id="tplXaTT" image="ico_s_doc_plain" label="Mẫu Tờ trình UBND Xã/Phường" onAction="Ribbon_InsertTplXaTT"/>
+              <button id="tplXaBC" image="ico_s_chart_bar" label="Mẫu Báo cáo UBND Xã/Phường" onAction="Ribbon_InsertTplXaBC"/>
+              <button id="tplXaKH" image="ico_s_calendar" label="Mẫu Kế hoạch UBND Xã/Phường" onAction="Ribbon_InsertTplXaKH"/>
+              <button id="tplXaTB" image="ico_s_text_center" label="Mẫu Thông báo UBND Xã/Phường" onAction="Ribbon_InsertTplXaTB"/>
+              <button id="tplXaBB" image="ico_s_people" label="Mẫu Biên bản UBND Xã/Phường" onAction="Ribbon_InsertTplXaBB"/>
+              <button id="tplXaGM" image="ico_s_mail" label="Mẫu Giấy mời UBND Xã/Phường" onAction="Ribbon_InsertTplXaGM"/>
+              <button id="tplXaGGT" image="ico_s_badge" label="Mẫu Giấy giới thiệu UBND Xã/Phường" onAction="Ribbon_InsertTplXaGGT"/>
+            </menu>
+            <menu id="mnuTplDangTW" label="Văn bản Đảng - Cấp TW &amp;&amp; Tỉnh ủy (HD 05)" image="ico_s_grid">
+              <button id="tplDangNQ" image="ico_s_star" label="Mẫu Nghị quyết của Đảng" onAction="Ribbon_InsertTplDangNQ"/>
+              <button id="tplDangQD" image="ico_s_stamp" label="Mẫu Quyết định của Đảng" onAction="Ribbon_InsertTplDangQD"/>
+              <button id="tplDangCT" image="ico_s_compass" label="Mẫu Chỉ thị của Đảng" onAction="Ribbon_InsertTplDangCT"/>
+              <button id="tplDangKL" image="ico_s_doc_plain" label="Mẫu Kết luận của Đảng" onAction="Ribbon_InsertTplDangKL"/>
+              <button id="tplDangQDi" image="ico_s_shield" label="Mẫu Quy định của Đảng" onAction="Ribbon_InsertTplDangQDi"/>
+              <button id="tplDangCTr" image="ico_s_calendar" label="Mẫu Chương trình của Đảng" onAction="Ribbon_InsertTplDangCTr"/>
+              <button id="tplDangKH" image="ico_s_calendar" label="Mẫu Kế hoạch của Đảng" onAction="Ribbon_InsertTplDangKH"/>
+              <button id="tplDangBC" image="ico_s_chart_bar" label="Mẫu Báo cáo của Đảng" onAction="Ribbon_InsertTplDangBC"/>
+              <button id="tplDangTB" image="ico_s_text_center" label="Mẫu Thông báo của Đảng" onAction="Ribbon_InsertTplDangTB"/>
+              <button id="tplDangTTr" image="ico_s_doc_plain" label="Mẫu Tờ trình của Đảng" onAction="Ribbon_InsertTplDangTTr"/>
+              <button id="tplDangTT" image="ico_s_compass" label="Mẫu Thông tri của Đảng" onAction="Ribbon_InsertTplDangTT"/>
+              <button id="tplDangCV" image="ico_s_mail" label="Mẫu Công văn của Đảng" onAction="Ribbon_InsertTplDangCV"/>
+              <button id="tplDangBB" image="ico_s_people" label="Mẫu Biên bản hội nghị Đảng" onAction="Ribbon_InsertTplDangBB"/>
+              <button id="tplDangGM" image="ico_s_mail" label="Mẫu Giấy mời của Đảng" onAction="Ribbon_InsertTplDangGM"/>
+              <button id="tplDangGGT" image="ico_s_badge" label="Mẫu Giấy giới thiệu của Đảng" onAction="Ribbon_InsertTplDangGGT"/>
+              <button id="tplDangPhuLuc" image="ico_s_doc_plain" label="Mẫu Phụ lục văn bản Đảng" onAction="Ribbon_InsertTplDangPhuLuc"/>
+              <button id="tplDangBanSao" image="ico_s_copy_doc" label="Mẫu Bản sao văn bản Đảng" onAction="Ribbon_InsertTplDangBanSao"/>
+            </menu>
+            <menu id="mnuTplDangChiBo" label="Văn bản Đảng - Cấp Chi bộ &amp;&amp; Cơ sở (HD 05)" image="ico_s_grid">
+              <button id="tplChiBoNQ" image="ico_s_star" label="Mẫu Nghị quyết Chi bộ" onAction="Ribbon_InsertTplChiBoNQ"/>
+              <button id="tplChiBoBC" image="ico_s_chart_bar" label="Mẫu Báo cáo Chi bộ" onAction="Ribbon_InsertTplChiBoBC"/>
+              <button id="tplChiBoKH" image="ico_s_calendar" label="Mẫu Kế hoạch sinh hoạt Chi bộ" onAction="Ribbon_InsertTplChiBoKH"/>
+              <button id="tplChiBoBB" image="ico_s_people" label="Mẫu Biên bản sinh hoạt Chi bộ" onAction="Ribbon_InsertTplChiBoBB"/>
+              <button id="tplChiBoCV" image="ico_s_mail" label="Mẫu Công văn Chi bộ" onAction="Ribbon_InsertTplChiBoCV"/>
+            </menu>
+            <menuSeparator id="sepTplOther"/>
+            <button id="tplVBHN" label="Mẫu Văn bản Hợp nhất (NĐ 250)"
+                    onAction="Ribbon_InsertTplVBHN" image="ico_s_grid"/>
+            <button id="btnOpenTemplatesFolder" image="ico_s_folder" label="Mở thư mục Biểu mẫu trên máy..."
+                    onAction="Ribbon_OpenTemplatesFolder"/>
+          </menu>
+        </group>
+
+        <!-- ============ 08. ORCAX SYSTEM ============ -->
+        <group id="grpOrcaXSystem" label="OrcaX">
+          <button id="btnPersonalize" label="Cá nhân hóa&#10;Dữ liệu" size="large" image="ico_gear"
+                  onAction="Ribbon_OpenPersonalize"
+                  screentip="Cá nhân hóa Dữ liệu Cơ quan &amp;&amp; Chữ ký"
+                  supertip="Thiết lập sẵn tên Cơ quan, Cơ quan Đảng, Danh sách Nơi nhận hay dùng và Lãnh đạo ký để chèn nhanh 1-Click vào văn bản. Dữ liệu ở đây hiển thị trực tiếp trong nhóm Soạn nhanh."/>
+          <box id="boxOrcaXSys" boxStyle="vertical">
+            <button id="btnBatchFolder" label="Xử lý hàng loạt" size="normal" image="ico_s_rocket"
+                    onAction="Ribbon_OpenBatchFolder"
+                    screentip="Chuẩn hóa hàng loạt cả thư mục"
+                    supertip="Chọn một thư mục chứa file Word, OrcaX sẽ mở và chuẩn hóa từng file theo quy chuẩn đang chọn, lưu kết quả vào thư mục ChuanHoa_OrcaX kèm thống kê."/>
+            <button id="btnLicenseInfo" label="Bản quyền OrcaX" size="normal" image="ico_s_key"
+                    onAction="Ribbon_ShowVFormatInfo"
+                    screentip="Thông tin bản quyền"
+                    supertip="Xem thời hạn bản quyền, nhập/sửa mã kích hoạt License Key, mua bản quyền và thông tin tác giả."/>
+            <button id="btnCheckUpdate" label="Cập nhật phiên bản" size="normal" image="ico_s_star"
+                    onAction="Ribbon_CheckUpdate"
+                    screentip="Kiểm tra Cập nhật ORCAX-FORMAT"
+                    supertip="Kiểm tra trực tuyến phiên bản mới nhất từ máy chủ OrcaX và tự động cập nhật an toàn, không làm mất dữ liệu đã cài đặt."/>
+            <button id="btnHelpGuide" label="Hướng dẫn sử dụng" size="normal" imageMso="Help"
+                    onAction="Ribbon_OpenHelpGuide"
+                    screentip="Hướng dẫn sử dụng OrcaX"
+                    supertip="Mở tài liệu hướng dẫn sử dụng OrcaX Office Suite."/>
+          </box>
+        </group>
+
+      </tab>
+    </tabs>
+  </ribbon>
+
+  <!-- ============ CONTEXT MENU - chuot phai doan van ban ============ -->
+  <contextMenus>
+    <contextMenu idMso="ContextMenuText">
+      <menu id="ctxOrcaX" label="OrcaX" image="ico_s_whale">
+        <button id="ctxCleanSpaces" label="Xóa khoảng trắng lỗi (đoạn chọn)" imageMso="AutoCorrect"
+                onAction="Ribbon_CleanSpaces"
+                screentip="Xóa khoảng trắng lỗi"
+                supertip="Xóa khoảng trắng thừa giữa từ và trước dấu câu trong đoạn đang bôi đen (nếu không bôi đen thì áp dụng toàn văn bản)."/>
+        <button id="ctxRemoveTones" label="Chuyển sang tiếng Việt không dấu" imageMso="Clear"
+                onAction="Ribbon_RemoveToneSelection"
+                screentip="Bỏ dấu tiếng Việt đoạn bôi đen"/>
+        <button id="ctxFixTones" label="Sửa dấu thanh" imageMso="SpellingAndGrammar"
+                onAction="Ribbon_FixToneMarks"/>
+        <button id="ctxAuditStyle" label="Soát văn phong đoạn chọn" imageMso="SpellingAndGrammar"
+                onAction="Ribbon_AuditWritingStyle"/>
+        <menuSeparator id="ctxSepFormat"/>
+        <button id="ctxStdParagraph" label="Định dạng chuẩn đoạn chọn (TNR, giãn dòng)" imageMso="ParagraphSpacingAfter"
+                onAction="Ribbon_StandardizeParagraphAndFont"/>
+        <button id="ctxHeading1" label="Chuyển thành Đề mục cấp 1" imageMso="StylesModifyStyle"
+                onAction="Ribbon_FormatHeading1"/>
+        <button id="ctxHeading2" label="Chuyển thành Đề mục cấp 2" imageMso="StylesModifyStyle"
+                onAction="Ribbon_FormatHeading2"/>
+        <button id="ctxHeading3" label="Chuyển thành Đề mục cấp 3" imageMso="StylesModifyStyle"
+                onAction="Ribbon_FormatHeading3"/>
+      </menu>
+    </contextMenu>
+  </contextMenus>
+</customUI>

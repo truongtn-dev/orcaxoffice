@@ -1,0 +1,18 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\VB and VBA Program Settings\VFormat\License]
+"LicenseKey"="ORCAX-VIP-BAN-QUYEN-VINH-VIEN-2026"
+"Status"="ACTIVE"
+"Type"="lifetime"
+"CustomerName"="VIP User"
+"ExpiresAt"="9999-12-31"
+"DaysLeft"="9999"
+"Blocked"="0"
+"ActivatedAt"="2026-01-01 00:00:00"
+
+[HKEY_CURRENT_USER\Software\OrcaX\OfficeSuite\License]
+"LicenseKey"="ORCAX-VIP-BAN-QUYEN-VINH-VIEN-2026"
+"Status"="ACTIVE"
+"Type"="lifetime"
+"CustomerName"="VIP User"
+"ExpiresAt"="9999-12-31"

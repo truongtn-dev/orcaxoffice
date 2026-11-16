@@ -33,4 +33,9 @@ desktop.ini
 ~$*
 *.tmp
 __pycache__/
-vba_src/
+
+# Build artifacts, backups and local caches
+*.bak-v1.0
+OrcaX_Setup_v1.0/
+source/orcax-office-suite/scripts/.build_cache/
+.zcode/

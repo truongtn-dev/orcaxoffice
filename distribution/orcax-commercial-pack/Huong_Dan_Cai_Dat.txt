@@ -1,28 +1,64 @@
 ================================================================================
-                    HƯỚNG DẪN CÀI ĐẶT & KÍCH HOẠT ORCAX (v1.0)
-               Hệ thống Chuẩn Hóa Thể Thức Văn Bản Việt Nam
-                           Bản quyền: OrcaX Office (orcax.vn)
+                    HƯỚNG DẪN CÀI ĐẶT & KÍCH HOẠT ORCAX OFFICE SUITE (v1.0)
+                Hệ thống Chuẩn Hóa Thể Thức Văn Bản Chuyên Nghiệp Việt Nam
+                            Bản quyền: OrcaX Office (orcax.vn)
 ================================================================================
 
-1. CÁCH 1 - CÀI ĐẶT TỰ ĐỘNG 1-CLICK (Khuyên dùng):
-   - Bước 1: Giải nén toàn bộ file zip này ra thư mục.
+1. CÁCH 1 - CÀI ĐẶT TỰ ĐỘNG 1-CLICK (Khuyên dùng - Nhanh nhất & Tự động 100%):
+   - Bước 1: Giải nén toàn bộ tệp OrcaX_Setup_v1.0.zip ra một thư mục.
    - Bước 2: Nhấp đúp chuột vào file "Cai_Dat_OrcaX_1Click.bat".
-   - Bước 3: Mở Microsoft Word, bạn sẽ thấy ngay Tab "ORCAX-FORMAT" trên thanh Ribbon!
-   * Lưu ý: File cài đặt 1-Click đã tự động kích hoạt Bản quyền vĩnh viễn và đồng bộ 58 biểu mẫu.
+   - Bước 3: Đợi 3 giây để hệ thống tự động:
+     + Sao chép Add-in vào thư mục STARTUP của Word.
+     + Mở khóa bảo mật tệp (Unblock Mark-of-the-Web).
+     + Xóa danh mục lỗi bộ nhớ đệm (Word Resiliency Cache).
+     + Đăng ký Vùng tin cậy bảo mật (Trusted Locations) cho Word.
+     + Kích hoạt Bản quyền VIP vĩnh viễn (ORCAX-VIP-BAN-QUYEN-VINH-VIEN-2026).
+     + Đồng bộ kho biểu mẫu chuẩn Quốc gia.
+   - Bước 4: Mở Microsoft Word, bạn sẽ thấy ngay Tab "ORCAX OFFICE" với 8 nhóm chức năng theo quy trình soạn thảo (Workbench v2.0)!
 
 2. CÁCH 2 - CÀI ĐẶT THỦ CÔNG:
-   - Bước 1: Nhấn tổ hợp phím Windows + R, nhập: %appdata%\Microsoft\Word\STARTUP và nhấn Enter.
-   - Bước 2: Copy file "OrcaX_Addin.dotm" vào thư mục STARTUP vừa mở.
-   - Bước 3: Nhấp đúp chuột vào file "KEY_BAN_QUYEN.reg" -> chọn "Yes" -> "OK".
-   - Bước 4: Khởi động lại Microsoft Word.
+   - Bước 1: Nhấn tổ hợp phím Windows + R, nhập: %appdata%\Microsoft\Word\STARTUP rồi nhấn Enter.
+   - Bước 2: Sao chép tệp "OrcaX_Addin.dotm" vào thư mục STARTUP vừa mở.
+   - Bước 3: Nhấp chuột phải vào "OrcaX_Addin.dotm" -> Chọn "Properties" -> Tích chọn "Unblock" ở góc dưới (nếu có) -> Bấm OK.
+   - Bước 4: Nhấp đúp chuột vào tệp "KEY_BAN_QUYEN.reg" -> Chọn "Yes" -> "OK".
+   - Bước 5: Mở Word -> File -> Options -> Trust Center -> Trust Center Settings -> Macro Settings:
+     + Chọn: "Enable all macros" (hoặc "Disable all macros with notification").
+     + Tích chọn: "Trust access to the VBA project object model".
+   - Bước 6: Khởi động lại Microsoft Word.
 
-3. KÍCH HOẠT BẢN QUYỀN VĨNH VIỄN:
-   - Nhấp đúp chuột vào file "KEY_BAN_QUYEN.reg" -> chọn "Yes" -> "OK".
-   - Sau khi mở Word, chọn Tab "ORCAX-FORMAT" -> bấm "Thông tin bản quyền" để xem trạng thái kích hoạt.
-   - Trải nghiệm 100% tính năng: Chuẩn hóa Nghị định 30, Hướng dẫn 05 Đảng, Công văn 250 Văn bản,
-     Căn lề A4 chuẩn, Đánh số trang tự động và thư viện 58 biểu mẫu chuẩn Quốc gia.
+3. XỬ LÝ KHI WORD BÁO LỖI MACRO ("The macro can't be found or has been disabled..."):
+   - Nguyên nhân: Word đã đưa Add-in vào danh sách "Disabled Items" khi có xung đột trước đó, hoặc do tính năng chặn tệp tải về từ Internet của Windows.
+   - Cách khắc phục tức thì: Chỉ cần chạy lại tệp "Cai_Dat_OrcaX_1Click.bat", trình cài đặt sẽ tự động quét dọn và gỡ bỏ Add-in khỏi Disabled Items!
 
-4. GỠ CÀI ĐẶT:
+4. CẤU TRÚC 8 NHÓM CHỨC NĂNG TRÊN TAB "ORCAX OFFICE" (WORKBENCH v2.0):
+   Ribbon thiết kế theo đúng QUY TRÌNH soạn thảo văn thư, đánh số từng bước:
+   01. Điều hành: Chuẩn hóa Toàn diện 1-Click (kèm biến thể Im lặng / Chỉ phân tích) ·
+       Phân tích Văn bản · TRUNG TÂM KIỂM SOÁT (bảng điều khiển điểm tuân thủ) · Khôi phục
+   02. Quy chuẩn: Chọn Quy chuẩn (NĐ30/HD05/NĐ250) · Cấp bậc · Loại văn bản · Thông tin Văn
+       bản (điền Số ký hiệu/Ngày/Địa danh/Cơ quan vào khung tiêu đề)
+   03. Chuẩn hóa Từng phần: ①Tiêu đề ②Tên loại & Trích yếu ③Đề mục & Nội dung ④Chữ ký &
+       Nơi nhận · Chuyển mã Unicode · Sửa dấu thanh
+   04. Rà soát & Đối chiếu: Rà soát Thể thức · Soát Văn phong Công vụ · So sánh Dự thảo
+       (Blackline) · Xuất PDF Lưu trữ · Cấu trúc Nâng cao (Mục lục tự động, Heading 1-3,
+       đánh số đa cấp, danh mục bảng biểu, lịch sử chuẩn hóa)
+   05. Soạn nhanh: Chèn Cơ quan / Chữ ký / Nơi nhận TỪ DỮ LIỆU THẬT bạn đã lưu trong
+       Cá nhân hóa (menu tự cập nhật) · Tiêu đề 13 loại văn bản · Dấu Khẩn/Mật & Chân trang
+   06. Bố cục Trang: Căn Lề A4 · Đánh số Trang · Trang ngang/dọc · Xóa trang trắng
+   07. Biểu mẫu: Kho 59 mẫu chuẩn (Bộ/Tỉnh/Sở · Xã/Phường · Đảng TW/Tỉnh ủy · Chi bộ)
+   08. OrcaX: Cá nhân hóa Dữ liệu · Xử lý hàng loạt cả thư mục · Bản quyền · Cập nhật · Hướng dẫn
+   MENU CHUỘT PHẢI trên đoạn bôi đen: menu "OrcaX" (xóa khoảng trắng, bỏ dấu, sửa dấu
+   thanh, soát văn phong, định dạng chuẩn, chuyển đề mục cấp 1/2/3).
+
+5. MẸO SỬ DỤNG NHANH:
+   - Nút "Trung tâm Kiểm soát" hiển thị ĐIỂM TUÂN THỦ văn bản (/100) và danh mục lỗi
+     theo mức Nghiêm trọng / Cảnh báo / Đề xuất, kèm nút sửa nhanh.
+   - Dữ liệu ở nhóm "05. Soạn nhanh" được lấy từ form "Cá nhân hóa Dữ liệu": vào
+     08.OrcaX > Cá nhân hóa để nhập Cơ quan, Lãnh đạo ký, Nơi nhận của bạn — menu sẽ
+     hiện đúng tên bạn đã đặt (cập nhật khi khởi động lại Word).
+   - "Xử lý hàng loạt": chọn 1 thư mục chứa file Word, OrcaX mở + chuẩn hóa từng file
+     theo quy chuẩn chọn, lưu bản đã chuẩn hóa vào thư mục con ChuanHoa_OrcaX.
+
+6. GỠ CÀI ĐẶT:
    - Nhấp đúp chuột vào file "Go_Cai_Dat_OrcaX.bat".
 
 ================================================================================
