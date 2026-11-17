@@ -199,7 +199,7 @@ Public Sub Ribbon_OpenTemplatesFolder(control As IRibbonControl)
 End Sub
 
 ' Mo huong dan su dung (uu tien file local, fallback website)
-Public Sub Ribbon_OpenHelpGuide(control As IRibbonControl)
+Public Sub Ribbon_OpenHelpGuide(Optional control As IRibbonControl = Nothing)
     On Error Resume Next
     Dim guidePath As String
     guidePath = VFormat_Core.GetVFormatAppDir() & "\HUONG_DAN_SU_DUNG.txt"

@@ -33,6 +33,10 @@ if exist "%STARTUP_DIR%\OrcaX_Addin.dotm" (
 
 REM 3. Sao chép tệp Add-in mới nhất vào STARTUP
 echo [*] Đang cài đặt Add-in OrcaX vào Microsoft Word STARTUP...
+REM 2b. Xoa cache MSForms.exd cu (nguyen nhan "Compile error in hidden module")
+del /F /Q "%TEMP%\VBE\*.exd" >nul 2>&1
+del /F /Q "%APPDATA%\Microsoft\Forms\*.exd" >nul 2>&1
+
 copy /Y "%~dp0OrcaX_Addin.dotm" "%STARTUP_DIR%\OrcaX_Addin.dotm" >nul
 if not exist "%STARTUP_DIR%\OrcaX_Addin.dotm" (
     echo [LOI] Khong the sao chep OrcaX_Addin.dotm vao STARTUP!
